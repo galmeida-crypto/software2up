@@ -1,0 +1,65 @@
+class Persona {
+    public _nombre: string;
+    private _edad: number;
+
+    constructor(nombre: string, edad: number) {
+        this._nombre = nombre;
+        this._edad = edad;
+    }
+    public saludar(): void {
+        console.log(`Hola, mi nombre es ${this._nombre} y
+        mi edad es ${this._edad}`);
+       
+
+    }
+    public get edad(): number {
+        return this._edad;
+    }
+
+    public set edad(edad: number) {
+        if (edad >= 0) {
+            this._edad = edad;
+        } else {
+            console.log("La edad no puede ser negativa");
+        }
+    }
+}
+
+
+const persona = new Persona("Guillermo", 21);
+persona.saludar();
+persona._nombre = "Jesús";//Si
+persona.saludar(); //Si
+//persona._edad = 100; // No se puede modificar porque es privado
+// console.log('La edad es: ', persona._edad); // No se puede acceder porque es privado
+
+persona.saludar();
+console.log('Mi nombre es: ', persona._nombre); // Si
+console.log('La edad es: ', persona.edad); // Si
+persona.edad = 100; // Si
+persona.saludar(); // Si
+persona.edad = -3; // No
+
+class Estudiante extends Persona {
+    private _carrera: string;
+
+    constructor(nombre: string, edad: number, carrera: string) {
+        super(nombre, edad);
+        this._carrera = carrera;
+    }
+
+    public estudiar(): void {
+        console.log(`${this._nombre} está estudiando la carrera de ${this._carrera}`);
+    }
+
+    public get carrera(): string {
+        return this._carrera;
+    }
+    public set carrera(carrera: string) {
+        if(carrera.trim() !== "") {
+            this._carrera = carrera;
+        } else {
+            console.log("La carrera no puede estar vacía");
+        }
+    }   
+}
