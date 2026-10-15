@@ -26,19 +26,19 @@ class Persona {
 }
 
 
-const persona = new Persona("Guillermo", 21);
-persona.saludar();
-persona._nombre = "Jesús";//Si
-persona.saludar(); //Si
+//const persona = new Persona("Guillermo", 21);
+//persona.saludar();
+//persona._nombre = "Jesús";//Si
+//persona.saludar(); //Si
 //persona._edad = 100; // No se puede modificar porque es privado
 // console.log('La edad es: ', persona._edad); // No se puede acceder porque es privado
 
-persona.saludar();
-console.log('Mi nombre es: ', persona._nombre); // Si
-console.log('La edad es: ', persona.edad); // Si
-persona.edad = 100; // Si
-persona.saludar(); // Si
-persona.edad = -3; // No
+//persona.saludar();
+//console.log('Mi nombre es: ', persona._nombre); // Si
+//console.log('La edad es: ', persona.edad); // Si
+//persona.edad = 100; // Si
+//persona.saludar(); // Si
+//persona.edad = -3; // No
 
 class Estudiante extends Persona {
     private _carrera: string;
@@ -62,4 +62,12 @@ class Estudiante extends Persona {
             console.log("La carrera no puede estar vacía");
         }
     }   
-}
+        public saludar(): void {
+        console.log(`Hola, mi nombre es ${this._nombre}, mi edad es ${this.edad} y estudio la carrera de ${this._carrera}`);
+        }
+    }
+    const persona = new Persona("Luis", 135);
+const estudiante = new Estudiante("Luis", 135, "Ingeniería de Software");
+persona.saludar();
+estudiante.saludar();
+    
